@@ -1,0 +1,268 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #333;
+    font-family: 'Poppins';
+
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Navigation */
+
+header{
+
+    width: 100%;
+    height: 100px;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 5px 0;
+    
+}
+
+h1{
+    font-size:40px;
+    color: #f1f1f1;
+    text-align: center;
+}
+
+.grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-auto-rows: 400px;
+    grid-template-columns: 400px;
+    justify-content: center;
+    gap:40px;
+}
+
+.box {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    box-shadow : 0 0 13px#f1f1f1;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+ }
+
+
+
+/* Menu 1 : blob */
+
+.container-menu {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.btn-menu, .btn-smiley, .blob {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+.blob, .btn-smiley {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-menu{
+    z-index: 20;
+}
+.btn-smiley .icone{
+    width: 35px;
+}
+.ligne {
+    width: 30px;
+    height: 3px;
+    border-radius: 5px;
+    background-color: #333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s 0.2s ease-in-out;
+}
+
+.ligne::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #333;
+    position: absolute;
+    bottom: 7px;   
+    transition: all 0.2s 0.2s ease-in-out;
+}
+.ligne::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #333;
+    position: absolute;
+    transition: all 0.2s 0.2s ease-in-out;
+    top: 7px;   
+}
+
+.container-menu.active .ligne::after {
+    transform:  translateY(-7px) rotate(45deg);
+}
+.container-menu.active .ligne::before {
+    transform: translateY(7px) rotate(-45deg);
+}
+.container-menu.active .ligne {
+    background-color: transparent;
+}
+.container-menu.active .btn-smiley {
+    animation: smile 1s linear;
+}
+@keyframes smile {
+    50% {
+        z-index: 21;
+    }
+    100% {
+        z-index: -1
+    }
+    
+}
+
+.icone {
+    width: 25px;
+}
+
+.blob-1{
+    background-color: #e0fefe;
+    transition: all 0.2s 0.3s ease-in-out;
+}
+.blob-2{
+    background-color: #c7ceea;
+    transition: all 0.2s 0.4s ease-in-out;
+}
+.blob-3{
+    background-color: #ffdac1;
+    transition: all 0.2s 0.5s ease-in-out;
+}
+.blob-4{
+    background-color: #ff9aa2;
+    transition: all 0.2s 0.6s ease-in-out;
+}
+.blob-5{
+    background-color: #ffffd8;
+    transition: all 0.2s 0.7s ease-in-out;
+}
+.blob-6{
+    background-color: #b5ead7;
+    transition: all 0.2s 0.8s ease-in-out;
+}
+.blob-7{
+    background-color: gold;
+    transition: all 0.2s 0.9s ease-in-out;
+}
+.blob-8{
+    background-color: darksalmon;
+    transition: all 0.2s 1s ease-in-out;
+}
+
+.container-menu.active .blob-1 {
+    left: 100%;
+}
+.container-menu.active .blob-2 {
+    top: 85%;
+    left: 85%;
+}
+.container-menu.active .blob-3 {
+    top: 100%;
+    left: 50%;
+}
+.container-menu.active .blob-4 {
+    left: 15%;
+    top: 85%;
+}
+.container-menu.active .blob-5 {
+    top: 50%;
+    left: 0;
+}
+.container-menu.active .blob-6 {
+    top: 15%;
+    left: 15%;
+}
+.container-menu.active .blob-7 {
+    top: 0;
+    left: 50%;
+}
+.container-menu.active .blob-8 {
+    left: 85%;
+    top: 15%;
+}
+
+/* Menu 2 : cursor*/
+
+.box2 {
+    cursor: none;
+    position: relative;
+}
+
+.cursor {
+    width: 40px;
+    height: 40px;
+    border-radius: 52% 48% 71% 29% / 48% 38% 62% 52%;
+    border: 2px solid #fff;
+    display: none;
+    position: absolute;
+    z-index: 1000px;
+    animation: borderAnim 4s ease-in-out infinite alternate;
+    pointer-events: none;
+    transition: transform 0.4s ease-in-out;
+
+}
+
+@keyframes borderAnim {
+    from {
+        border-radius: 52% 48% 71% 29% / 48% 38% 62% 52%  ;
+    }
+    to {
+        border-radius: 27% 73% 22% 78% / 59% 53% 47% 41% ;
+    }
+}
+
+
+.hovered {
+    transform: scale(3);
+    background-size: cover;
+}
+
+.box2 nav ul {
+    list-style-type: none;
+}
+
+.box2 nav ul li {
+    font-size: 30px;
+    color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    font-weight: 100;
+}
+
+
+ 
